@@ -23,6 +23,13 @@ pub fn display_footer() {
 	println!("{FOOTER}");
 }
 
+pub fn display_in_box(text: &str) {
+	let banner = "-".repeat(text.len() + 2);
+	println!("+{}+", banner);
+	println!("| {} |", text);
+	println!("+{}+", banner);
+}
+
 pub fn display_menu() {
 	println!("\n\n\n");
 	display_title();
@@ -38,10 +45,19 @@ pub fn display_tasks(tasks: &Vec<String>) {
 			maximum_length = length;
 		}
 	}
-	
-	//println!("{maximum_length}");
-	for (i, j) in tasks.iter().enumerate() {
-		println!("{i}: {j}");
+
+	if tasks.len() == 0 {
+		println!("There are no tasks!");
+		return;
 	}
+
+	let banner = "-".repeat((maximum_length + 5) as usize);
+	println!("+{}+", banner);
+	for (i, j) in tasks.iter().enumerate() {
+		print!("| {}: {}", i+1, j);
+		print!("{}", " ".repeat((maximum_length as usize) - j.len()));
+		print!(" |\n");
+	}
+	println!("+{}+", banner);
 }
 
