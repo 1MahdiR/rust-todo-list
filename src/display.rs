@@ -8,18 +8,18 @@ pub const MENU:[&str; 4] = [
 pub const TITLE:&str = "#-+-+-+-+-+-+-+- TODO LIST -+-+-+-+-+-+-+-+-#\n";
 pub const FOOTER:&str ="#-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-#\n";
 
-pub fn display_title() {
+fn display_title() {
 	println!("{TITLE}");
 }
 
-pub fn display_options() {
+fn display_options() {
 	for i in MENU {
 		println!("{i}");
 	}
 	println!("");
 }
 
-pub fn display_footer() {
+fn display_footer() {
 	println!("{FOOTER}");
 }
 

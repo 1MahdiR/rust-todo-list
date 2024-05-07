@@ -13,7 +13,6 @@ pub fn get_menu_option() -> Option<i32> {
 	if let Some('\r') = user_input.chars().next_back() {
 		user_input.pop();
 	}
-	println!("You typed: {}", user_input);
 	
 	match user_input.parse::<i32>() {
 		Ok(parsed_int) => Some(parsed_int),
@@ -34,8 +33,25 @@ pub fn get_task_from_user() -> String {
 	if let Some('\r') = user_input.chars().next_back() {
 		user_input.pop();
 	}
-	println!("You typed: {}", user_input);
 	
 	user_input
 }
 
+pub fn get_task_index_from_user() -> Option<i32> {
+	print!("Enter the number of the task you want to delete: ");
+	let mut user_input = String::new();
+	let _ = stdout().flush();
+	stdin().read_line(&mut user_input).expect("Did not enter a correct string!!");
+	
+	if let Some('\n') = user_input.chars().next_back() {
+		user_input.pop();
+	}
+	if let Some('\r') = user_input.chars().next_back() {
+		user_input.pop();
+	}
+	
+	match user_input.parse::<i32>() {
+		Ok(parsed_int) => Some(parsed_int),
+		Err(_) => None,
+	}
+}

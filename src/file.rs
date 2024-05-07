@@ -32,3 +32,15 @@ pub fn write_task_to_file(task: &str) {
 	
 	writeln!(file, "{}", task).expect("Failed to write to file");
 }
+
+pub fn delete_a_task_from_file(task_index: i32) {
+	let tasks = read_tasks_from_file();
+
+	let mut file = File::create(FILE_PATH).expect("Failed to create file");
+
+	for (i, j) in tasks.iter().enumerate() {
+		if task_index - 1 != i as i32 {
+			writeln!(file, "{}", j).expect("Failed to write to file");
+		}
+	}
+}
